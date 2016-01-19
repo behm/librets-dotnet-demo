@@ -18,7 +18,10 @@ namespace LibRetsDemo
 
             using (var retsSession = new RetsSession(loginUrl))
             {
-                retsSession.SetUserAgent(userAgent);
+                if (!string.IsNullOrEmpty(userAgent))
+                {
+                    retsSession.SetUserAgent(userAgent);
+                }
                 retsSession.SetRetsVersion(RetsVersion.RETS_1_7_2);
 
                 if (!retsSession.Login(username, password))
